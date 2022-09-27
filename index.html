@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player</title>
+    <link rel="icon" href="./assets/img/logo-music.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="./assets/fonts/FontAwesome_Pro/css/all.css">
+    <link rel="stylesheet" href="./assets/css/base.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+    <div class="music-app">
+        <div class="music-card">
+            <div class="music-card_header">
+                <span class="header_list-music-icon">
+                    <i class="fa-regular fa-list-music"></i>
+                    <span class="tooltip tooltip-playlist">
+                        Show Playlist
+                    </span>
+                </span>
+
+                <span class="header_title">
+                    Now Playing
+                </span>
+
+                <span class="header_heart">
+                    <i class="fa-regular fa-heart heart-icon"></i>
+                    <i class="fa-solid fa-heart heart-icon-red"></i>
+                    <span class="tooltip tooltip-favourite">
+                        Add Favourite
+                    </span>
+                </span>
+            </div>
+
+            <div class="music-card_cd">
+                <img src="" alt="">
+            </div>
+
+            <div class="music-card_name">
+                <h3 class="name_song"></h3>
+                <p class="name_singer"></p>
+            </div>
+
+            <div class="music-card_scroll">
+                <div class="scroll-value"></div>
+            </div>
+
+            <div class="music-card_time">
+                <span class="time-left">00:00</span>
+                <span class="time-right">05:27</span>
+            </div>
+
+            <div class="music-card_control">
+                <div class="random">
+                    <i class="fa-solid fa-shuffle"></i>
+                </div>
+                <div class="previous">
+                    <i class="fa-solid fa-backward-step"></i>
+                </div>
+                <div class="play">
+                    <i class="fa-regular fa-circle-play play-icon"></i>
+                    <i class="fa-regular fa-circle-pause pause-icon"></i>
+                </div>
+                <div class="next">
+                    <i class="fa-solid fa-forward-step"></i>
+                </div>
+                <div class="repeat">
+                    <i class="fa-solid fa-repeat no-repeat"></i>
+                    <i class="fa-solid fa-repeat-1 repeat1"></i>
+                </div>
+            </div>
+
+            <div class="music-card_volume">
+                <div class="volumeBtn">
+                    <i class="fa-solid fa-volume volume-not-mute"></i>
+                    <i class="fa-solid fa-volume-xmark volume-mute"></i>
+                </div>
+                <div class="volume-bar">
+                    <div class="volume-value"></div>
+                </div>
+            </div>
+            
+            <audio id="audio" src=""></audio>
+        </div>
+
+
+        <!-- Playlist  -->
+        <div class="playlist-container">
+            <div class="playlist">
+                <div class="playlist-header">
+                    <h3>My Playlist</h3>
+                    <span class="close-list">
+                        <i class="fa-solid fa-xmark"></i>
+                    </span> 
+                </div>
+        
+                <ul class="list-song-items">
+                   
+                   
+                </ul>
+            </div>
+        </div>
+
+        <div class="list-option-container hide">
+            <div class="list-option">
+                <div class="list-option-header">
+                    <div class="option-header-img">
+                        <img src="" alt="">
+                    </div>
+
+                    <div class="option-header-info">
+                        <h3 class="option-header-song">
+                           
+                        </h3>
+
+                        <div class="option-header-singer">
+                            <div class="download-icon">
+                                <i class="fa-regular fa-arrow-down"></i>
+                            </div>
+                            <span class="singer">
+                            
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="close-option-btn">
+                        <i class="fa-regular fa-circle-xmark"></i>
+                    </div>
+                </div>
+
+                <div class="list-option-body">
+                    <ul class="list-option-items">
+                        <li class="option-item">
+                            <i class="fa-regular fa-heart-circle-plus"></i> 
+                            Thêm vào yêu thích
+                        </li>
+                        <li class="option-item">
+                            <i class="fa-regular fa-play"></i>
+                            Phát ngay
+                        </li>
+                        <li class="option-item">
+                            <i class="fa-sharp fa-solid fa-forward-step"></i>
+                            Phát kế tiếp
+                        </li>
+                        <li class="option-item">
+                            <i class="fa-regular fa-arrow-down"></i> Tải xuống 
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+    <script src="./main.js"></script>
+</html>
