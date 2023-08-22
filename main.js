@@ -1,6 +1,7 @@
 
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
+const PLAYER_STORAGE_KEY = 'F8_PLAYER';
 
 const musicApp = $('.music-app');
 const heartIcon = $('.header_heart');
@@ -38,9 +39,15 @@ const app = {
     isMute:false,
     isRepeat: false,
     isRandom: false,
-
+    config: JSON.parse(localStorage.getItem(PLAYER_STORAGE_KEY)) || {},
     songItem:[],
     songs : [
+        {
+            name: 'Little Do You Know',
+            singer: 'Alex & Sierra',
+            path: './assets/music/Little_do_you_know_Alex_&_Sierra.mp3',
+            image: './assets/img/little.jpg'
+        },
         {
             name: 'There\'s No One At All',
             singer: 'Sơn Tùng M-TP',
@@ -52,12 +59,6 @@ const app = {
             singer: 'Mono',
             path: './assets/music/y2meta.com - MONO - Waiting For You (Album 22 - Track No.10) (128 kbps).mp3',
             image: './assets/img/waitingforyou.png'
-        },
-        {
-            name: 'Little Do You Know',
-            singer: 'Alex & Sierra',
-            path: './assets/music/Little_do_you_know_Alex_&_Sierra.mp3',
-            image: './assets/img/little.jpg'
         },
         {
             name: 'Titanium',
@@ -176,6 +177,10 @@ const app = {
        
     ],
 
+    setConfig: function(key,value) {
+        this.config[key] = value;
+        localStorage.setItem(PLAYER_STORAGE_KEY, JSON.stringify(this.config)); 
+    },
 
     // Tạo định dạng hiển thị của thời gian
     timeFormat : function(seconds){
@@ -214,6 +219,15 @@ const app = {
         $('.list-song-items').innerHTML = html;
     },
 
+    loadConfig: function() {
+
+        this.isRandom = this.config.isRandom ?? false;
+        this.isRepeat = this.config.isRepeat ?? false;
+
+        repeatBtn.classList.toggle('active',this.isRepeat);
+        randomBtn.classList.toggle('active',this.isRandom);
+      
+    },
 
     // Kích hoạt bài hát (hiện hành phát) trên playlist
     activeSong : function(){
@@ -249,6 +263,7 @@ const app = {
             }
         })
     },
+
     
 
     // Tải bài hát mới
@@ -556,6 +571,7 @@ const app = {
                 
                
             }
+            _this.setConfig('isRandom',_this.isRandom);
         }
       
 
@@ -570,6 +586,7 @@ const app = {
                 this.classList.add('active')
                 _this.isRepeat=true;
             }
+            _this.setConfig('isRepeat',_this.isRepeat);
         }
 
         
@@ -664,7 +681,8 @@ const app = {
 
     // Hàm để chạy các phương thức
     start: function(){
-
+        this.loadConfig();
+        
         this.defineProperties();
 
         this.render();
